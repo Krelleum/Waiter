@@ -11,7 +11,7 @@ const testroute = require('./api/routes/testroute');
 
 //  Mongo Connect
 
-// mongoose.connect('mongodb://manageit:manageit30!@ds247290.mlab.com:47290/manageit')
+mongoose.connect('mongodb://waiterdatabase:waiterdatabase30!@ds055865.mlab.com:55865/waiterdatabase')
 
 // Body-Parser
 
