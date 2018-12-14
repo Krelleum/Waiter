@@ -5,36 +5,38 @@ import StoreLogin from './Login/StoreLogin';
 import StoreView from './StoreView/StoreView';
 import GuestView from './GuestView/GuestView';
 
+import loginReducer from '../redux/reducers/loginReducer';
+
+import { connect } from 'react-redux';
+
+
 import './LoginContainer.css';
 
-class LoginContainer extends Component {
- constructor(props){
-     super(props);
-     this.state = {
-         show: 'GuestLogin',
-     }
- 
-    }
- 
 
+
+class LoginContainer extends Component {
+ 
     // Dicides which Components have to be rendered. Either GuestLogin or StoreLogin and afterwards GuestView, StoreView or SetupView
 
 toRender(){
-    if(this.state.show === 'GuestLogin'){
+    
+    console.log(this.props.login.show);
+    
+    if(this.props.login === 'GuestLogin'){
         return <GuestLogin/>;
     }
-    else if(this.state.show === 'StoreLogin'){
+    else if (this.props.login.show === 'StoreLogin'){
         return <StoreLogin/>
     }
-    else if (this.state.show === 'GuestView'){
+    else if (this.props.login.show === 'GuestView'){
         return <GuestView/>
     }
 
-    else if (this.state.show === 'StoreView'){
+    else if (this.props.login.show === 'StoreView'){
         return <StoreView/>
     }
 
-    else if(this.state.show === 'SetupView'){
+    else if (this.props.login.show === 'SetupView'){
         return null;
     }
 
@@ -57,4 +59,29 @@ render() {
 
 
 
-export default LoginContainer;
+
+
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    
+    return {
+        storeLogin: () => {
+            dispatch({
+                type: 'CHANGE_TO_STORELOGIN'
+            });
+        }
+    };
+
+
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (LoginContainer);

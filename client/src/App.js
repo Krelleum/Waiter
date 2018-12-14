@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import { Provider } from 'react-redux';
+
+import store from './redux/store/store';
+
 
 import LoginCotainer from './components/LoginContainer';
 
@@ -8,12 +12,7 @@ import LoginCotainer from './components/LoginContainer';
 
 class App extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      init: 'init',
-    }
-  }
+
 
 
 //  componentDidMount(){
@@ -38,9 +37,11 @@ class App extends Component {
   render() {
 
     return (
-      <div>
-        <LoginCotainer/>
-      </div>
+      <Provider store={store}>
+        <LoginCotainer />
+      </Provider>
+        
+      
       
 
     );
