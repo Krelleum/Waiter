@@ -1,11 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 import loginReducer from '../reducers/loginReducer';
 
-export default (createStore, 
-    combineReducers({login: loginReducer}), 
+
+export default createStore( 
+    combineReducers({
+        login: loginReducer
+    }),
     {},
-     applyMiddleware(logger())
-    
+    composeWithDevTools(applyMiddleware()), 
     );

@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import './GuestLogin.css';
 
+import { changeStoreLogin } from '/Users/Kevin/Desktop/Waiter/Waiter/client/src/redux/actions/loginActions';
+
+import { connect } from 'react-redux';
+
+
 
 class GuestLogin extends Component {
   render() {
@@ -26,7 +31,7 @@ class GuestLogin extends Component {
                         </form>
                     </div>
 
-                    <button>Log Me in As Admin</button>
+                    <button onClick={() => this.props.showStoreLogin()}>Log Me in As Admin</button>
                 </div>
 
 
@@ -40,4 +45,22 @@ class GuestLogin extends Component {
 }
 
 
-export default GuestLogin;
+
+
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showStoreLogin: () =>{
+            dispatch(changeStoreLogin())
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (GuestLogin);

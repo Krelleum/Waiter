@@ -5,31 +5,31 @@ const loginReducer = (state = {
     
     switch( action.type) {
         case 'CHANGE_TO_GUESTLOGIN':
-            state = {
+           return state = {
                 ...state,
                 show: 'GuestLogin'
             };
             break;
         case 'CHANGE_TO_STORELOGIN':
-            state = {
+            return state = {
                 ...state,
                 show: 'StoreLogin'
             };
             break;
         case 'CHANGE_TO_GUESTVIEW':
-            state = {
+           return state = {
                 ...state,
                 show: 'GuestView'
             };
             break;
         case 'CHANGE_TO_STOREVIEW':
-            state = {
+           return state = {
                 ...state,
                 show: 'StoreView'
             };
             break;
         case 'CHANGE_TO_SETUPVIEW':
-            state = {
+            return state = {
                 ...state,
                 show: 'SetupView'
             };

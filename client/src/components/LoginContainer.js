@@ -22,7 +22,7 @@ toRender(){
     
     console.log(this.props.login.show);
     
-    if(this.props.login === 'GuestLogin'){
+    if(this.props.login.show === 'GuestLogin'){
         return <GuestLogin/>;
     }
     else if (this.props.login.show === 'StoreLogin'){
@@ -79,8 +79,6 @@ const mapDispatchToProps = (dispatch) => {
             });
         }
     };
-
-
 };
 
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './StoreLogin.css';
 
+import { connect } from 'react-redux';
+
+import { changeGuestLogin } from '/Users/Kevin/Desktop/Waiter/Waiter/client/src/redux/actions/loginActions';
 
 class StoreLogin extends Component {
   render() {
@@ -28,7 +31,7 @@ class StoreLogin extends Component {
                         </form>
                     </div>
 
-                    
+                    <button onClick={() => this.props.showGuestLogin()}>Log me in as Guest!</button>
                 </div>
 
 
@@ -42,4 +45,20 @@ class StoreLogin extends Component {
 }
 
 
-export default StoreLogin;
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showGuestLogin: () => {
+            dispatch(changeGuestLogin())
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoreLogin);
