@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import LoginCotainer from './components/LoginContainer';
 
 
 
@@ -15,22 +16,22 @@ class App extends Component {
   }
 
 
- componentDidMount(){
-   axios({
-     method: 'get',
-     url: 'http://localhost:5000/testroute/getpost',
-     header: {
-       'Content-Type': 'application/json',
-       }
-   })
-   .then(result => {
-     this.setState({init: result.data});
-     console.log(result);
-   })
-   .catch(err => {
-     console.log(err);
-   })
- }
+//  componentDidMount(){
+//    axios({
+//      method: 'get',
+//      url: 'http://localhost:5000/testroute/getpost',
+//      header: {
+//        'Content-Type': 'application/json',
+//        }
+//    })
+//    .then(result => {
+//      this.setState({init: result.data});
+//      console.log(result);
+//    })
+//    .catch(err => {
+//      console.log(err);
+//    })
+//  }
  
 
 
@@ -38,10 +39,7 @@ class App extends Component {
 
     return (
       <div>
-        <h1>Hello World!</h1>
-        <p>How Are You?</p>
-        <p>{this.state.init.name}</p>
-        <p>{this.state.init.age}</p>
+        <LoginCotainer/>
       </div>
       
 
