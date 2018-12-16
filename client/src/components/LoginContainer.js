@@ -18,23 +18,18 @@ import './LoginContainer.css';
 
 
 class LoginContainer extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            loggedin: false
-        }
-    }
+   
 
 
 
-componentWillMount(){
+componentDidMount(){
     this.checkToken();
 }
 
 checkToken(){
     
  var token = localStorage.getItem('token');
-console.log(token)
+
  if(token){
      
     var body = {
@@ -48,22 +43,13 @@ console.log(token)
          header: { 'Content-Type': 'application/json ' },
      })
      .then(response => {
-         if (response){
-             this.setState({
-                 loggedin:true
-             })
-         }
-         else{
-             this.setState({
-                 loggedin: false
-             })
-         }
+         if (response)
+            this.props.guestView()
+         
      })
      .catch(err => {
          if(err)
-             this.setState({
-                 loggedin: false
-             })
+             console.log(err)
      })
  }
 }
@@ -74,10 +60,8 @@ console.log(token)
 
 toRender(){
     
-   if(this.state.loggedin === true){
-       return <GuestView/>
-   }
-   else{
+   
+   
 
        if (this.props.login.show === 'GuestLogin') {
            return <GuestLogin />;
@@ -103,8 +87,7 @@ toRender(){
 
 
 
-   }
-    
+       
    
 }
 
@@ -139,6 +122,11 @@ const mapDispatchToProps = (dispatch) => {
         storeLogin: () => {
             dispatch({
                 type: 'CHANGE_TO_STORELOGIN'
+            });
+        },
+        guestView: () => {
+            dispatch({
+                type: 'CHANGE_TO_GUESTVIEW'
             });
         }
     };

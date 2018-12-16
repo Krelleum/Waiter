@@ -8,10 +8,7 @@ import { changeGuestLogin } from '../actions/loginActions';
 class StoreLogin extends Component {
   
   
-  
-  
-  
-  
+
   
   
   

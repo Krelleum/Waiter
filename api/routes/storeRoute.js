@@ -8,10 +8,27 @@ const Store = require('../models/storeModel');
 
 
 
+// Create a GuestToken
+router.post('/gettoken', (req, res, next) => {
+    var token = jwt.sign({ userid: req.body.userid, storeid: req.body.storeid, tableid: req.body.tableid }, 'waiter', { expiresIn: '3h' })
+    res.status(200).json({ message: 'Token signed', token: token });
+    console.log('****************NEW USER - Token signed***********************');
+})
+
+
+
+
+
+
+
+
+// Create a new Store (ADMIN)
+
 router.post('/createstore', (req, res, next) => {
     const newStore = new Store({
         storemongoid: new mongoose.Types.ObjectId(),
         storeid: req.body.storeid,
+        storename: req.body.storename,
         storeemail: req.body.storeemail,
         storepassword: req.body.storepassword,
         tables: req.body.tables,
@@ -36,10 +53,18 @@ router.post('/createstore', (req, res, next) => {
 
 router.get('/getstore/:storeid', (req, res, next) => {
    console.log('request received')
-   Store.findOne({ storeid: req.params.storeid} )
+   Store.findOne({ storeid: req.params.storeid})
+        .exec()
         .then(result => {
-            res.status(200).json(result)
-            console.log('Store was found by id')
+            if(result){
+                res.status(200).json(result)
+                console.log('Store was found by id')
+            }
+            else{
+                res.status(404).json(result)
+                console.log('Error 404 - No Store Found')
+            }
+            
         })
         .catch(err => {
             res.status(500).json(err)
@@ -50,12 +75,6 @@ router.get('/getstore/:storeid', (req, res, next) => {
 
 
 
-// Create a GuestToken
-router.post('/gettoken', (req, res, next) =>{
-    var token = jwt.sign({ userid: req.body.userid, storeid: req.body.storeid, tableid: req.body.storeid }, 'waiter', { expiresIn: '3h' })
-    res.status(200).json({ message: 'Token signed', token: token});
-    console.log('****************NEW USER - Token signed***********************');
-})
 
 
 

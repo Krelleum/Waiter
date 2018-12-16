@@ -13,8 +13,8 @@ router.post('/checktoken',(req, res, next) => {
         console.log(req.body.token);
         const decoded = jwt.verify(req.body.token, 'waiter');
         
-        res.status(200).json({message: 'Login authorized'})
-        console.log('TOKEN VERIFIED!!!')
+        res.status(200).json({decoded: decoded})
+        console.log(decoded, 'TOKEN VERIFIED!!!')
     }
     catch(err){
         

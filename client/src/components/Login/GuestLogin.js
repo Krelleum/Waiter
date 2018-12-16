@@ -42,9 +42,7 @@ getStore(){
     var storeid = this.state.storeid;
     var tableid = this.state.tableid;
 
-    
-
-    if(storeid, tableid != 'init'){
+    if(storeid && tableid !== 'init'){
         axios({
             method: 'get',
             url: 'http://localhost:5000/store/getstore/' + storeid,
@@ -55,8 +53,8 @@ getStore(){
             
         })
         .catch(err => {
-            console.log(err)
-            alert(err)
+            console.log('Store does not exist', err)
+            alert('Store does not exist' + err)
         })
     }
     else{
@@ -71,12 +69,7 @@ checkTable(data){
     
     var tableid = this.state.tableid;
    
-    console.log(data);
-
-    console.log(data.tables)
-
-    console.log(tableid)
-
+    
     if(data.tables.includes(Number(tableid))){
         
         console.log('table is included')
@@ -97,13 +90,13 @@ checkTable(data){
         })
         .catch(err => {
             console.log(err)
-            alert('Something went wrong! Try Again (c:guestLogin fn: checkLogin)')
+            alert('Something went wrong! Try Again (c:guestLogin fn: checkTable)')
         })
        
     }
     else{
         console.log('table is not included');
-        alert('Something went wrong! Try Again (c:guestLogin fn: checkLogin)')
+        alert('table is not included')
     }
     
     
