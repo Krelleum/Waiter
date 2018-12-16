@@ -3,10 +3,20 @@ import './StoreLogin.css';
 
 import { connect } from 'react-redux';
 
-import { changeGuestLogin } from '/Users/Kevin/Desktop/Waiter/Waiter/client/src/redux/actions/loginActions';
+import { changeGuestLogin } from '../actions/loginActions';
 
 class StoreLogin extends Component {
-  render() {
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    render() {
     return (
       <div>
         
@@ -44,6 +54,8 @@ class StoreLogin extends Component {
   }
 }
 
+
+// REDUX 
 
 const mapStateToProps = (state) => {
     return {
