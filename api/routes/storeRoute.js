@@ -32,7 +32,7 @@ router.post('/createstore', (req, res, next) => {
         storeemail: req.body.storeemail,
         storepassword: req.body.storepassword,
         tables: req.body.tables,
-        itemlistid: req.body.itemlistid,
+        
         
     });
 
@@ -69,6 +69,24 @@ router.get('/getstore/:storeid', (req, res, next) => {
         .catch(err => {
             res.status(500).json(err)
             console.log('failed to get Store by id')
+        })
+})
+
+// Adds Itemlistid to the created Store
+
+
+
+
+router.patch('/additemlistid', (req, res, next) => {
+    Store.findOneAndUpdate({storeid: req.body.storeid}, {itemlistid: req.body.itemlistid})
+    .exec()
+        .then(result => {
+            res.status(201).json(result)
+            console.log('Item List ID ' + result.data.itemlistid + 'was added to ' + result.data.storeid)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+            console.log('Itemlistid could not be added to Store')
         })
 })
 

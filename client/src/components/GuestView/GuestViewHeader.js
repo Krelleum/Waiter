@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-
+import './GuestViewHeader.css';
 
 
 
@@ -9,7 +9,7 @@ class GuestViewHeader extends Component {
     return (
       <div>
         <nav className="navbar navbar-default">
-          <div className="container-fluid">
+          <div className="container">
             
     <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -18,7 +18,7 @@ class GuestViewHeader extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand">WAITER</a>
+              <h1 className="navbar-brand" id='navbarbrand'><span>W</span></h1>
             </div>
 
             

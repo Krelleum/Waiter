@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const storeRoute = require('./api/routes/storeRoute');
 const userRoute = require('./api/routes/userRoute');
 const itemListRoute = require('./api/routes/itemlistRoute');
+const orderRoute = require('./api/routes/orderRoute');
 const checkAuth = require('./api/routes/checkauth');
 //  Mongo Connect
 
@@ -38,7 +39,8 @@ app.use((req, res, next) => {
 app.use('/store', storeRoute);
 app.use('/user', userRoute);
 app.use('/itemlist', itemListRoute);
-app.use('/auth', checkAuth)
+app.use('/auth', checkAuth);
+app.use('/order', orderRoute);
 // app.use('/inbox', inboxRoute);
 // app.use('/customer', customerRoute);
 // app.use('/comment', commentRoute);

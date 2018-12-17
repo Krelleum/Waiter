@@ -5,8 +5,8 @@ const orderSchema = mongoose.Schema({
     userid: String,
     storeid: String,
     tableid: String,
-    itemid: String,
-    quantity: Number,
+    itemname: String,
+    itemprice: Number,
     status: String,
     timecreated: { type: Date, default: Date.now }
 });

@@ -1,5 +1,9 @@
 :root{
-
+ --color1: #191917;
+ --color2: #58575A;
+ --color3: #C99D58;
+ --color4: #85A3AC;
+ --color5: #F4F2F4;
 }
 
 
@@ -14,8 +18,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  color: black;
+  font-family: nunito;
+  background-color: var(--color5);
+  
  
    
 }

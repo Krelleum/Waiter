@@ -143,27 +143,27 @@ render() {
             
             <div className='guestlogincontainer container'>
 
-                <div className='col-md-6 guestlogincontainerleft'>
+                <div className='col-md-4 col-md-offset-1 guestlogincontainerleft'>
                     <div className='guestlogininfo'>
-                        <h1>Waiter</h1>
+                        <h1><span>W</span>aiter</h1>
                         <h2>The best Way to serve!</h2>
                         <p>Waiter lets you order your Dishes and Drinks Online. Try it Now!</p>
                     </div>
                 </div>
 
-                <div className='col-md-6 guestlogincontainerright'>
+                <div className='col-md-4 guestlogincontainerright'>
                     <div className='guestloginform'>
                         <form>
                             <input type='text' placeholder='Store ID' name='storeid' onChange={this.handleInput.bind(this)}></input>
                             <input type='text' placeholder='Table ID' name='tableid' onChange={this.handleInput.bind(this)}></input>
                             
-                            
+                            <p onClick={this.getStore.bind(this)}>Send</p>
                         </form>
                     </div>
 
-                    <button onClick={this.getStore.bind(this)}>Send</button>
+                    
 
-                    <button onClick={() => this.props.showStoreLogin()}>Log Me in As Admin</button>
+                    <button onClick={() => this.props.showStoreLogin()}>Log Me in As Admin ></button>
                 </div>
 
 

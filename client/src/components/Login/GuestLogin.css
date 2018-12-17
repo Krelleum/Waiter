@@ -1,0 +1,79 @@
+.guestlogincontainer{
+    margin-top: 200px;
+    background-color: var(--color5);
+    min-height: 600px;
+}
+
+.guestlogincontainerleft{
+    background: white;
+    margin-top: 100px;
+    min-height: 200px;
+}
+
+.guestlogincontainerleft h1{
+    font-family: Major Mono Display;
+}
+
+.guestlogincontainer span{
+    background: var(--color1);
+   
+    color: var(--color3);
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.guestlogincontainerleft h2{
+    font-family: nanum gothic;
+   font-size: 2rem;
+}
+
+
+.guestlogincontainerright{
+    background-image: url('C:/Users/Kevin/Desktop/Waiter/Waiter/client/src/images/loginimage.jpg');
+    background-size: cover;
+    min-height: 500px;
+    padding: 0px;
+}
+/* LOGINFORM */
+
+
+
+
+
+
+
+.guestloginform{
+ margin-top: 100px;
+ height: 200px;
+ background: rgba(255,255,255, 0.5);
+ padding-top: 40px;
+}
+
+.guestloginform input{
+    background: white;
+    border: none;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.guestloginform p{
+    background: black;
+    font-weight: bold;
+    color: var(--color5);
+    padding: 5px;
+    height: 30px;
+    width: 177px;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
+.guestlogincontainerright button{
+    background: transparent;
+    border: none;
+    color: white;
+    float: right;
+}

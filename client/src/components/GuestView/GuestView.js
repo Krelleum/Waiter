@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 import GuestViewHeader from './GuestViewHeader';
-
+import ItemContainer from './ItemContainer';
+import GuestViewFooter from './GuestViewFooter';
 
 
 
@@ -20,9 +21,6 @@ class GuestView extends Component {
   
   componentDidMount(){
     this.checkToken()
-
-
-
   }
   
   
@@ -45,7 +43,8 @@ class GuestView extends Component {
           this.setState({
             userid: response.data.decoded.userid,
             storeid: response.data.decoded.storeid,
-            tableid: response.data.decoded.tableid
+            tableid: response.data.decoded.tableid,
+            
           })
             
           console.log(this.state)
@@ -59,6 +58,16 @@ class GuestView extends Component {
 
   
   
+  showItemContainer(){
+    if(this.state.userid != 'init' && this.state.storeid != 'init' && this.state.tableid != 'init')
+    {
+      return <ItemContainer userid={this.state.userid} storeid={this.state.storeid} tableid={this.state.tableid}/>
+    }else{
+      return null
+    }
+    
+  }
+  
   
   
   
@@ -69,6 +78,8 @@ class GuestView extends Component {
     return (
       <div>
         <GuestViewHeader/>
+        {this.showItemContainer()}
+        <GuestViewFooter/>
       </div>
     )
   }
