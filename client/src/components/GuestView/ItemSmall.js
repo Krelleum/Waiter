@@ -75,7 +75,7 @@ sendOrder(){
     header: { 'Content-Type': 'application/json ' },
   })
     .then(response => {
-      this.addOrderToUser(response.data.userid, response.data.orderid);
+      this.addOrderToUser(response.data.userid, response.data.orderid, itemprice);
       console.log('Order Created - Trying to add order to user account')
       
 
@@ -92,11 +92,12 @@ sendOrder(){
 }
 
 
-addOrderToUser(userid, orderid){
+addOrderToUser(userid, orderid, itemprice){
   
   var body = {
     userid: userid,
-    orderid: orderid
+    orderid: orderid,
+    itemprice: itemprice,
   }
   
   axios({

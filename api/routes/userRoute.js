@@ -28,7 +28,8 @@ router.post('/createuser', (req, res, next) => {
 })
 
 router.patch('/addordertouser', (req, res, next) => {
-    User.findOneAndUpdate({ usermongoid: req.body.userid }, {$push:{'orderid': req.body.orderid}})
+    console.log(req.body.itemprice)
+    User.findOneAndUpdate({ usermongoid: req.body.userid }, {$push:{'orderid': req.body.orderid}}, {$add: {'total': req.body.itemprice}})
         .then(result => {
             res.status(200).json(result);
             console.log('Order Added to User');

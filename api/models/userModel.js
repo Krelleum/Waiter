@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     storeid: String,
     tableid: String,
     orderid: {type: Array, default: []},
-    total: Number,
+    total: {type: Number, default: 0},
     timecreated: { type: Date, default: Date.now }
 });
 
