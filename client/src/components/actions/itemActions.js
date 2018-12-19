@@ -12,3 +12,16 @@ export function showItemBig(itemname) {
     };
 }
 
+export function setTotal(amount){
+    return {
+        type: 'SET_TOTAL',
+        payload: amount
+    }
+}
+
+export function setInitialTotal(amount) {
+    return {
+        type: 'SET_INITIAL_TOTAL',
+        payload: amount
+    }
+}

@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import './itemSmall.css'
-
+import { connect } from 'react-redux';
 
 import axios from 'axios'
 
 class ItemSmall extends Component {
   constructor(props){
     super(props)
+    
   }
   
 
 
-  componentDidMount(){
+  componentWillMount(){
+    
     this.checkToken()
   }
+
+
+
 
 checkToken() {
 
@@ -38,7 +43,7 @@ checkToken() {
 
           })
 
-          console.log(this.state)
+          
         })
         .catch(err => {
           if (err)
@@ -76,10 +81,7 @@ sendOrder(){
   })
     .then(response => {
       this.addOrderToUser(response.data.userid, response.data.orderid, itemprice);
-      console.log('Order Created - Trying to add order to user account')
-      
-
-      
+      console.log('Order Created - Trying to add order to user account')  
     })
     .catch(err => {
       if (err)
@@ -107,9 +109,9 @@ addOrderToUser(userid, orderid, itemprice){
     header: { 'Content-Type': 'application/json ' },
   })
     .then(response => {
-      console.log(response)
+      
       console.log('Order Added to User Account ')
-
+      this.updateStateOfTotal(itemprice)
 
     })
     .catch(err => {
@@ -121,9 +123,14 @@ addOrderToUser(userid, orderid, itemprice){
 
 
 
+
+
+
 }
 
-
+  updateStateOfTotal(amount) {
+    this.props.setTotal(amount)
+}
 
   render() {
     
@@ -142,7 +149,7 @@ addOrderToUser(userid, orderid, itemprice){
 
 
 
-        <p className='price'>{this.props.data.itemprice} €</p>
+        <p className='price'>{this.props.data.itemprice.toFixed(2)} €</p>
 
         <button className='itemsmallbutton' onClick={this.sendOrder.bind(this)}>Order Now</button>
         
@@ -151,4 +158,34 @@ addOrderToUser(userid, orderid, itemprice){
   }
 }
 
-export default ItemSmall;
+
+
+
+
+
+
+
+// REDUX
+const mapStateToProps = (state) => {
+  return {
+    total: state.total
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+   
+    setTotal: (amount) => {
+      dispatch({
+        type: 'SET_TOTAL',
+        payload: amount
+      });
+    }
+  };
+};
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (ItemSmall);

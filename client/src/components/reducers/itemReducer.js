@@ -1,7 +1,7 @@
 const itemReducer = (state = {
     show: 'itemlist',
     itemname: 'init',
-    
+    total: 0,
 }, action) => {
 
     switch (action.type) {
@@ -18,7 +18,19 @@ const itemReducer = (state = {
                 itemname: action.payload
             };
             break;
-       
+        case 'SET_TOTAL':
+            return state = {
+                ...state,
+                
+                total: state.total + action.payload
+            };
+            break;
+        case 'SET_INITIAL_TOTAL':
+            return state = {
+                ...state,
+                total: action.payload
+            };
+            break;
 
         default:
             return state;

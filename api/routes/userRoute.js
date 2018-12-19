@@ -28,11 +28,18 @@ router.post('/createuser', (req, res, next) => {
 })
 
 router.patch('/addordertouser', (req, res, next) => {
-    console.log(req.body.itemprice)
-    User.findOneAndUpdate({ usermongoid: req.body.userid }, {$push:{'orderid': req.body.orderid}}, {$add: {'total': req.body.itemprice}})
+    
+    User.update({ usermongoid: req.body.userid }, { $push: { 'orderid': req.body.orderid } })
         .then(result => {
-            res.status(200).json(result);
-            console.log('Order Added to User');
+            User.update({ usermongoid: req.body.userid }, { $inc: { 'total': req.body.itemprice } })
+            .then(result =>{
+                res.status(200).json(result);
+                console.log('Order Added to User and Total calculated');
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            
         })
         .catch(err => {
             console.log(err);
@@ -40,6 +47,19 @@ router.patch('/addordertouser', (req, res, next) => {
         })
 })
 
+
+
+router.get('/getuser/:userid', (req, res, next) => {
+    User.findOne({usermongoid: req.params.userid})
+    .then(result => {
+        res.status(200).json(result)
+        console.log('User found')
+    })
+    .catch(err => {
+        res.status(500).json(err)
+        console.log('unable to find user')
+    })
+})
 
 
 
