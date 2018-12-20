@@ -3,6 +3,7 @@ import './GuestViewFooter.css';
 
 import GuestViewOrder from './GuestViewOrder';
 
+
 import { connect } from 'react-redux';
 
 class GuestViewFooter extends Component {

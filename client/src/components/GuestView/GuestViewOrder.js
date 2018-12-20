@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GuestViewOrdered from './GuestViewOrdered';
+import GuestViewCart from './GuestViewCart';
+
 
 import './GuestViewFooter.css';
 
@@ -9,6 +11,10 @@ import './GuestViewFooter.css';
       <div>
         <div className='col-md-5 footerextended'>
             <GuestViewOrdered/>
+            
+        </div>
+        <div className='col-md-6'>
+          <GuestViewCart/>
         </div>
       </div>
     )

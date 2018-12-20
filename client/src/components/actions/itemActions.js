@@ -25,3 +25,10 @@ export function setInitialTotal(amount) {
         payload: amount
     }
 }
+
+export function addToCart(item){
+    return {
+        type: 'ADD_TO_CART',
+        payload: item
+    }
+}

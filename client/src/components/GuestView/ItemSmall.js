@@ -5,22 +5,22 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 
 class ItemSmall extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    
+
   }
-  
 
 
-  componentWillMount(){
-    
+
+  componentWillMount() {
+
     this.checkToken()
   }
 
 
 
 
-checkToken() {
+  checkToken() {
 
     var token = localStorage.getItem('token');
 
@@ -43,7 +43,7 @@ checkToken() {
 
           })
 
-          
+
         })
         .catch(err => {
           if (err)
@@ -53,106 +53,122 @@ checkToken() {
   }
 
 
-sendOrder(){
-  var itemlistid = this.props.itemlistid;
-  var itemname = this.props.data.itemname;
-  var itemprice = this.props.data.itemprice;
+  sendOrder() {
+    var itemlistid = this.props.itemlistid;
+    var itemname = this.props.data.itemname;
+    var itemprice = this.props.data.itemprice;
 
-  var userid = this.state.userid;
-  var storeid = this.state.storeid;
-  var tableid = this.state.tableid;
+    var userid = this.state.userid;
+    var storeid = this.state.storeid;
+    var tableid = this.state.tableid;
 
-  var body = {
-    userid,
-    storeid,
-    tableid,
-    itemlistid,
-    itemname,
-    itemprice,
-    status: 'open'
+    var body = {
+      userid,
+      storeid,
+      tableid,
+      itemlistid,
+      itemname,
+      itemprice,
+      status: 'open'
+    }
+
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/order/createorder',
+      data: body,
+      header: { 'Content-Type': 'application/json ' },
+    })
+      .then(response => {
+        this.addOrderToUser(response.data.userid, response.data.orderid, itemprice);
+        console.log('Order Created - Trying to add order to user account')
+      })
+      .catch(err => {
+        if (err)
+          console.log(err)
+        console.log('Unable to create order')
+      })
+
+
+
   }
 
 
-  axios({
-    method: 'post',
-    url: 'http://localhost:5000/order/createorder',
-    data: body,
-    header: { 'Content-Type': 'application/json ' },
-  })
-    .then(response => {
-      this.addOrderToUser(response.data.userid, response.data.orderid, itemprice);
-      console.log('Order Created - Trying to add order to user account')  
+  addOrderToUser(userid, orderid, itemprice) {
+
+    var body = {
+      userid: userid,
+      orderid: orderid,
+      itemprice: itemprice,
+    }
+
+    axios({
+      method: 'patch',
+      url: 'http://localhost:5000/user/addordertouser',
+      data: body,
+      header: { 'Content-Type': 'application/json ' },
     })
-    .catch(err => {
-      if (err)
-        console.log(err)
-      console.log('Unable to create order')
-    })
+      .then(response => {
 
+        console.log('Order Added to User Account ')
+        this.updateStateOfTotal(itemprice)
 
-
-}
-
-
-addOrderToUser(userid, orderid, itemprice){
-  
-  var body = {
-    userid: userid,
-    orderid: orderid,
-    itemprice: itemprice,
+      })
+      .catch(err => {
+        if (err)
+          console.log(err)
+        console.log('Unable to add Order to User Account')
+      })
   }
-  
-  axios({
-    method: 'patch',
-    url: 'http://localhost:5000/user/addordertouser',
-    data: body,
-    header: { 'Content-Type': 'application/json ' },
-  })
-    .then(response => {
-      
-      console.log('Order Added to User Account ')
-      this.updateStateOfTotal(itemprice)
-
-    })
-    .catch(err => {
-      if (err)
-        console.log(err)
-      console.log('Unable to add Order to User Account')
-    })
-
-
-
-
-
-
-
-}
 
   updateStateOfTotal(amount) {
     this.props.setTotal(amount)
-}
+  }
+
+
+  addItemToCart() {
+    var item = {
+      itemname: this.props.data.itemname,
+      itemprice: this.props.data.itemprice,
+    }
+
+    this.props.addToCart(item);
+
+  }
+
 
   render() {
-    
-    let path =  this.props.data.itemimagepath;
-    
+
+    let path = this.props.data.itemimagepath;
+
     return (
       <div className='col-md-3 itemsmallwrapper'>
 
         <div className='itemsmallimage'>
           <img src={path} ></img>
         </div>
-        
+
         <div className='itemsmalltitle'>
           <p>{this.props.data.itemname}</p>
         </div>
 
 
 
-        <p className='price'>{this.props.data.itemprice.toFixed(2)} €</p>
+        <div className='itemdescription'>
+          <p>Saftiges {this.props.data.itemname}</p>
+        </div>
 
-        <button className='itemsmallbutton' onClick={this.sendOrder.bind(this)}>Order Now</button>
-        
+        <div className='itemprice'>
+          <p className='price'>{this.props.data.itemprice.toFixed(2)} €</p>
+        </div>
+
+
+        <div className='itembuttons'>
+          <button className='itemsmallbutton' onClick={this.sendOrder.bind(this)}>Order Now</button>
+          <button className='itemcartbutton' onClick={this.addItemToCart.bind(this)}>Add to Cart</button>
+        </div>
+
+
       </div>
     )
   }
@@ -175,11 +191,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
   return {
-   
+
     setTotal: (amount) => {
       dispatch({
         type: 'SET_TOTAL',
         payload: amount
+      });
+    },
+    addToCart: (item) => {
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: item,
       });
     }
   };
@@ -188,4 +210,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (ItemSmall);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemSmall);
