@@ -52,7 +52,7 @@ class ItemSmall extends Component {
     }
   }
 
-
+// Creates a new Order
   sendOrder() {
     var itemlistid = this.props.itemlistid;
     var itemname = this.props.data.itemname;
@@ -93,7 +93,7 @@ class ItemSmall extends Component {
 
   }
 
-
+// Adds the created order to user session account
   addOrderToUser(userid, orderid, itemprice) {
 
     var body = {

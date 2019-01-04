@@ -13,7 +13,7 @@ import './GuestViewFooter.css';
             <GuestViewOrdered/>
             
         </div>
-        <div className='col-md-6'>
+        <div className='col-md-5'>
           <GuestViewCart/>
         </div>
       </div>

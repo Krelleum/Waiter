@@ -75,7 +75,7 @@ class ItemContainer extends Component {
 
 render() {
     return (
-      <div className='container'>
+      <div className='container itemcontainer'>
         
               {this.state.data && this.state.data.items.map((item, i) => <ItemSmall key={i} data={item} itemlistid={this.state.data.itemlistmongoid} />)}
       </div>

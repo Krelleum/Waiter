@@ -8,7 +8,7 @@ import StoreLogin from './Login/StoreLogin';
 import StoreView from './StoreView/StoreView';
 import GuestView from './GuestView/GuestView';
 
-import loginReducer from './reducers/loginReducer';
+
 
 import { connect } from 'react-redux';
 

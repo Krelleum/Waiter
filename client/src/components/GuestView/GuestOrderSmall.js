@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-
+import './GuestViewFooter.css'
 
 
 class GuestOrderSmall extends Component {
@@ -11,9 +11,14 @@ class GuestOrderSmall extends Component {
   
     render() {
     return (
-      <div>
-            <p>{this.props.data.itemname}</p>
-            <p>{this.props.data.itemprice.toFixed(2)}</p>
+      <div className='col-md-9 guestordersmallwrapper'>
+        <div className='guestordersmallname'>
+          <p>{this.props.data.itemname}</p>
+        </div>
+        <div className='guestordersmallprice'>
+          <p>{this.props.data.itemprice.toFixed(2)} €</p>
+        </div>
+          
       </div>
     )
   }

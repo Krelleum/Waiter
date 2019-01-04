@@ -32,3 +32,17 @@ export function addToCart(item){
         payload: item
     }
 }
+
+export function removeFromCart(index){
+    return {
+        type: 'REMOVE_FROM_CART',
+        payload: index
+    }
+}
+
+export function resetCart(){
+    return{
+        type: 'RESET_CART'
+    }
+}
+

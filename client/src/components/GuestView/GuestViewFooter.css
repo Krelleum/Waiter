@@ -1,12 +1,26 @@
 .guestviewfooter{
-    min-height: 50px;
+    min-height: 20px;
     max-height: 100%;
-    overflow: hidden;
-    background: black;
-    color: white;
+    overflow: scroll;
+    border-top: 5px solid var(--color3);
+    background: White;
+    color: Black;
     position: fixed;
     bottom: 0;
     
+}
+
+.guestviewfooter::-webkit-scrollbar { 
+    display: none; 
+}
+
+.guestvieworderedwrapper{
+    overflow: scroll;
+    max-height: 500px;
+}
+
+.guestvieworderedwrapper::-webkit-scrollbar { 
+    display: none; 
 }
 
 
@@ -62,4 +76,129 @@
 
 .footerextended p{
     display: inline;
+}
+
+
+
+
+/* ITEMS Direct Order */
+
+.guestordersmallwrapper{
+    
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 10px;
+    margin-top: 10px;
+    max-height: 50px;
+}
+
+
+
+.guestordersmallname{
+    display: inline-block;
+    font-weight: 800;
+    width: 100px;
+    max-width: 100px;
+    
+}
+
+.guestordersmallprice{
+    display: inline-block;
+    width: 100px;
+    max-width: 100px;
+    margin-left:100px;
+    
+    text-align: center;
+}
+
+
+
+/* ITEMS Cart */
+
+
+.guestcartsmallwrapper{
+    border: 2px solid black;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 10px;
+    margin-top: 10px;
+    max-height: 50px;
+    height: 50px;
+}
+
+.guestcartsmallwrapper:hover{
+    background: black;
+    color: white;
+}
+
+
+.guestcartsmallremovebtn button{
+    
+    background: none;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+    color: red;
+    
+}
+
+
+.guestcartsmallremovebtn button:hover{
+    
+    background: red;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+    color: white;
+    
+}
+
+.guestcartsmallremovebtn{
+    float: left;
+    
+}
+
+
+.guestcartsmallname{
+    display: inline-block;
+    font-weight: 800;
+    
+    max-width: 200px;
+    margin-left: 20px;
+    
+}
+
+.guestcartsmallprice{
+    float: right;
+    width: 100px;
+    max-width: 100px;
+    
+    
+    text-align: center;
+}
+
+
+
+/* SEND ORDER BUTTON */
+
+
+#sendcartorderbtn{
+    margin-top: 20px;
+    float: right;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 800;
 }

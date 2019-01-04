@@ -2,7 +2,7 @@ const itemReducer = (state = {
     show: 'itemlist',
     itemname: 'init',
     total: 0,
-    cart:[],
+    cart: [],
 }, action) => {
 
     switch (action.type) {
@@ -22,7 +22,7 @@ const itemReducer = (state = {
         case 'SET_TOTAL':
             return state = {
                 ...state,
-                
+
                 total: state.total + action.payload
             };
             break;
@@ -32,16 +32,27 @@ const itemReducer = (state = {
                 total: action.payload
             };
             break;
+
         case 'ADD_TO_CART':
             return state = {
                 ...state,
                 cart: [...state.cart, action.payload]
-            }
-        case 'REMOVE_FROM_CART':
+            };
+            break;
+
+        case 'RESET_CART':
             return state = {
                 ...state,
-                cart: state.cart.pull(action.payload)
-            }    
+                cart: []
+            };
+            break;    
+        
+        case 'REMOVE_FROM_CART':
+
+            return state = {
+                ...state,
+                cart: [...state.cart.slice(0, action.payload), ...state.cart.slice(action.payload + 1)]
+            }
 
         default:
             return state;

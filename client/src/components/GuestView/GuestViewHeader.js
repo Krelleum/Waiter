@@ -5,6 +5,16 @@ import './GuestViewHeader.css';
 
 
 class GuestViewHeader extends Component {
+ 
+ 
+ 
+ 
+
+  handleLogout(){
+    localStorage.removeItem('token');
+  }
+
+ 
   render() {
     return (
       <div>
@@ -31,7 +41,10 @@ class GuestViewHeader extends Component {
               
                 
     </div>
+
+    
   </div>
+          <button onClick={this.handleLogout.bind(this)}>Logout</button>
 </nav>
       </div>
     )

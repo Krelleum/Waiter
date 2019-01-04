@@ -59,6 +59,7 @@
 .itemsmallbutton {
     background: var(--color3);
     border:none;
+    border-radius: 50px;
     width: 40%;
     padding: 5px;
     padding-left: 15px;
@@ -78,6 +79,7 @@
 .itemcartbutton {
     float: left;
     background: var(--color1);
+    border-radius: 50px;
     border:none;
     width: 40%;
     padding: 5px;
