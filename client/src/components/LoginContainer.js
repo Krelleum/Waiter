@@ -43,8 +43,13 @@ checkToken(){
          header: { 'Content-Type': 'application/json ' },
      })
      .then(response => {
-         if (response)
-            this.props.guestView()
+         if (!response.data.decoded.useremail){
+             this.props.guestView()
+         }
+         else if(response.data.decoded.useremail){
+             this.props.storeView()
+         }
+            
          
      })
      .catch(err => {
@@ -128,7 +133,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({
                 type: 'CHANGE_TO_GUESTVIEW'
             });
-        }
+        },
+        storeView: () => {
+            dispatch({
+                type: 'CHANGE_TO_STOREVIEW'
+            })
+        },
+
     };
 };
 

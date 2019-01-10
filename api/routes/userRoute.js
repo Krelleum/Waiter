@@ -67,6 +67,4 @@ router.get('/getuser/:userid', (req, res, next) => {
 
 
 
-
-
 module.exports = router;

@@ -16,7 +16,41 @@ router.post('/gettoken', (req, res, next) => {
 })
 
 
+// Check Login information and create a StoreToken
 
+router.post('/getstoretoken', (req, res, next) => {
+    
+    var storeid = req.body.storeid;
+    var useremail =  req.body.useremail;
+    var userpassword = req.body.userpassword;
+
+   
+
+    if(storeid && useremail && userpassword){
+    
+    Store.findOne({storeid: req.body.storeid})
+    
+    .then(result => {
+        
+        console.log(result.storeemail)
+        if (result.storeemail === req.body.useremail && result.storepassword === req.body.userpassword){
+            
+            var token = jwt.sign({storeid, useremail}, 'waiter', {expiresIn: '3h'})
+
+            res.status(200).json({message: 'Store Token signed', token: token})
+            console.log('****************Store Login - Token signed***********************');
+        }
+        else{
+            res.status(401).json('Unauthorized')
+            console.log('***************UNAUTHORIZED TO LOGIN STORE ACCOUNT');
+        }
+    })
+    .catch(err => {
+        res.status(500).json(err);
+        console.log('ERROR WHILE LOGIN INTO STORE ACCOUNT!')
+    })
+}
+})
 
 
 

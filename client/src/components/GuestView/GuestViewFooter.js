@@ -92,7 +92,6 @@ class GuestViewFooter extends Component {
     else if(this.state.payment && this.state.showOrders){
       return (
       <div>
-      
       <div><p>Payment Requested</p></div>
       </div>
     )

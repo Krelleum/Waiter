@@ -1,0 +1,79 @@
+.storelogincontainer{
+    margin-top: 200px;
+    background-color: var(--color5);
+    min-height: 600px;
+}
+
+.storelogincontainerleft{
+    background: white;
+    margin-top: 100px;
+    min-height: 200px;
+}
+
+.storelogincontainerleft h1{
+    font-family: Major Mono Display;
+}
+
+.storelogincontainer span{
+    background: var(--color1);
+   
+    color: var(--color3);
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.storelogincontainerleft h2{
+    font-family: nanum gothic;
+   font-size: 2rem;
+}
+
+
+.storelogincontainerright{
+    background-image: url('C:/Users/Kevin/Desktop/Waiter/Waiter/client/src/images/table.jpg');
+    background-size: cover;
+    min-height: 500px;
+    padding: 0px;
+}
+/* LOGINFORM */
+
+
+
+
+
+
+
+.storeloginform{
+ margin-top: 100px;
+ height: 200px;
+ background: rgba(255,255,255, 0.5);
+ padding-top: 40px;
+}
+
+.storeloginform input{
+    background: white;
+    border: none;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.storeloginform p{
+    background: black;
+    font-weight: bold;
+    color: var(--color5);
+    padding: 5px;
+    height: 30px;
+    width: 177px;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
+.storelogincontainerright button{
+    background: transparent;
+    border: none;
+    color: white;
+    float: right;
+}
