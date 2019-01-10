@@ -1,3 +1,8 @@
+.itemcontainer{
+    margin-bottom: 100px;
+}
+
+
 .itemsmallwrapper{
     padding: 0px;
     background: white;
@@ -13,6 +18,7 @@
     height: 200px;
     width: 100%;
     object-fit: fill;
+    border-bottom: 5px solid var(--color3);
 }
 
 .itemsmallimage img{
@@ -52,6 +58,7 @@
 
 .itembuttons{
     height: 50px;
+    margin-left: 10px;
 }
 
 
@@ -59,6 +66,7 @@
 .itemsmallbutton {
     background: var(--color3);
     border:none;
+    margin-right:10px;
     border-radius: 50px;
     width: 40%;
     padding: 5px;
@@ -79,6 +87,7 @@
 .itemcartbutton {
     float: left;
     background: var(--color1);
+    
     border-radius: 50px;
     border:none;
     width: 40%;

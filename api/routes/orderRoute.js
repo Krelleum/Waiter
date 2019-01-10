@@ -50,5 +50,19 @@ router.get('/getorder/:userid', (req, res ,next ) => {
 })
 
 
+
+router.patch('/requestpayment/:userid', (req, res, next) => {
+    Order.updateMany({userid: req.params.userid}, {$set: {status : 'awaitpayment'}})
+    .then(result => {
+        res.status(200).json(result)
+        console.log('Orderstatus set to // awaitpayment')
+    })
+    .catch(err =>{
+        res.status(500).json(err);
+        console.log('Orderstatus could not be changed')
+    }) 
+})
+
+
 module.exports = router;
 

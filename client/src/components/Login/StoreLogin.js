@@ -6,10 +6,28 @@ import { connect } from 'react-redux';
 import { changeGuestLogin } from '../actions/loginActions';
 
 class StoreLogin extends Component {
-  
+  constructor(props){
+      super(props);
+      this.state = {
+          storeid: 'init',
+          useremail: 'init',
+          userpassword: 'init',
+      }
+  }
   
 
-  
+    handleInput(e) {
+        e.preventDefault();
+
+        var property = e.target.name;
+        var value = e.target.value;
+
+        this.setState({
+            [property]: value
+        });
+
+
+    }
   
   
   
@@ -30,9 +48,9 @@ class StoreLogin extends Component {
                 <div className='col-md-6 storelogincontainerright'>
                     <div className='storeloginform'>
                         <form>
-                            <input type='text' placeholder='Store ID'></input>
-                            <input type='text' placeholder='Username'></input>
-                            <input type='text' placeholder='Password'></input>
+                            <input type='text' name='storeid' placeholder='Store ID'></input>
+                            <input type='text' name='useremail' placeholder='Email'></input>
+                            <input type='text' name='userpassword' placeholder='Password'></input>
                             
                             <button>Send</button>
                         </form>

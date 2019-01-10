@@ -14,7 +14,7 @@ import './GuestViewFooter.css';
             
         </div>
         <div className='col-md-5'>
-          <GuestViewCart/>
+          <GuestViewCart />
         </div>
       </div>
     )

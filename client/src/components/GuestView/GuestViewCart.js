@@ -70,8 +70,8 @@ class GuestViewCart extends Component {
    
     for(var i = 0; i < store.length; i++){ 
       
-      var itemname = store[i].itemname;
-      var itemprice = store[i].itemprice;
+    var itemname = store[i].itemname;
+    var itemprice = store[i].itemprice;
 
     var userid = this.state.userid;
     var storeid = this.state.storeid;
@@ -150,6 +150,7 @@ class GuestViewCart extends Component {
 handleClick(){
   if(this.props.item.cart.length > 0){
     this.sendOrders(this.props.item.cart);
+    this.handleCartReset()
   }
   
   else{
@@ -174,7 +175,7 @@ handleCartReset(){
         
         <button id='sendcartorderbtn' onClick={this.handleClick.bind(this)}>Send Order</button>
         
-        <button onClick={this.handleCartReset.bind(this)}>Reset</button>
+        <button id='resetcartorderbtn' onClick={this.handleCartReset.bind(this)}>Reset</button>
         </div>
       </div>
     )
