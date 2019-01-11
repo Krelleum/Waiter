@@ -37,7 +37,7 @@ router.post('/createorder', (req, res, next) => {
 })
 
 
-
+// Get order by User id
 router.get('/getorder/:userid', (req, res ,next ) => {
     Order.find({userid: req.params.userid})
     .then(result => {
@@ -47,6 +47,21 @@ router.get('/getorder/:userid', (req, res ,next ) => {
         res.status(500).json(err)
         console.log('error')
     })
+})
+
+
+// Get order by Store id
+
+router.get('/getorderbystore/:storeid', (req, res, next) => {
+    Order.find({ storeid: req.params.storeid })
+        .sort({ datefield: 1 })
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+            console.log('error')
+        })
 })
 
 
