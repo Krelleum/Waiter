@@ -72,7 +72,7 @@ class StoreLogin extends Component {
         
             <div className='storelogincontainer container'>
 
-                <div className='col-md-4 storelogincontainerleft'>
+                <div className='col-md-4 col-md-offset-1 storelogincontainerleft'>
                     <div className='storelogininfo'>
                         <h1><span>W</span>aiter Mangager</h1>
                         <h2>The best Way to serve!</h2>
