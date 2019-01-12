@@ -8,7 +8,7 @@ class StoreView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: 'init'
+      data: 'init',
     }
   }
 
@@ -16,7 +16,7 @@ class StoreView extends Component {
 componentDidMount () { 
   this.checkToken()
   
-  this.interval = setInterval(() => {this.checkToken()}, 10000)
+  
 }
 
 
@@ -38,8 +38,11 @@ componentDidMount () {
         header: { 'Content-Type': 'application/json ' },
       })
         .then(response => {
-          console.log(response)
-          this.continiousfetch(response.data.decoded.storeid)
+          
+          
+          this.getStore(response.data.decoded.storeid)
+          
+          console.log('Trying to fetch data - 10 second interval running');
         })
         .catch(err => {
           console.log(err);
@@ -48,49 +51,77 @@ componentDidMount () {
     }
   }
 
-
-
-  continiousfetch(storeid) {
-
-
+  
+  // Gets the Store Information by StoreId from Checktoken
+  
+  getStore(storeid){
     axios({
       method: 'get',
-      url: 'http://localhost:5000/order/getorderbystore/' + storeid,
+      url: 'http://localhost:5000/store/getstore/' + storeid,
       header: { 'Content-Type': 'application/json ' },
     })
-      .then(response => {
-        console.log(response.data)
-        this.setState({ data: response.data });
-        console.log('Orders successfully fetched from server!')
-      })
-      .catch(err => {
-        console.log(err);
-        console.log('error while fetching orders from server')
-      })
-
+    .then(response => {
+      this.setState({ storeid: response.data.storeid, tables: response.data.tables });
+    })
+    .catch(err => {
+      console.log(err);
+      console.log('error while getting store by id')
+    })
   }
 
 
-  componentWillUnmount(){
-    clearInterval(this.interval);
-  }
+  
 
 
-  renderOrders(){
-    var data = this.state.data;
+
+
+
+
+
+ 
+
+
+
+
+
+  renderTables(){
+   
+    var tables = this.state.tables;
     
-    if(this.state.data !== 'init'){
-      var datareverse = data.reverse();
-      return datareverse.map((orderdata, i) => <StoreViewTable key={i} data={orderdata}/>)
+    
+
+    
+    
+    
+    if (tables){
+      return tables.map((table, i) =>  <StoreViewTable key={i} tableid={table} storeid={this.state.storeid} ></StoreViewTable> )
     }
+  
+    
+    
+    
+    
+    
+   
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
   render() {
     return (
       <div>
         <StoreViewHeader />
-        {this.renderOrders()}
+        {this.renderTables()}
       </div>
     )
   }

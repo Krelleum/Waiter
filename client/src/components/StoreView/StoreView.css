@@ -1,0 +1,69 @@
+
+
+/* TABLEWRAPPER */
+
+.storeviewtablewrapper{
+    background: white;
+    overflow: hidden;
+    margin-left: 100px;
+    
+    margin-bottom: 20px;
+    padding: 0px;
+    
+}
+
+.storeviewtableheader{
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+.storeviewtableheader h2{
+   font-family:Nanum Gothic; 
+   font-size: 1.2rem;
+    margin: 0px;
+}
+
+/* ORDERWRAPPER */
+.storeviewtableorderwrapper::-webkit-scrollbar{
+    display: none;
+    
+}
+
+.storeviewtableorderwrapper{
+    overflow: scroll;
+    max-height: 400px;
+}
+
+
+
+
+/* STOREVIEWORDER */
+
+
+.storevieworder{
+    border-radius: 0px 10px  10px 0px;
+    
+    margin-left: 15px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.storevieworder p{
+    display: inline;
+}
+
+.storevieworder:hover{
+    background: black;
+    color: white;
+}
+
+.storevieworderstatusopen{
+    border-left: 10px solid lightgreen;
+}
+
+.storevieworderstatusclosed{
+   border-left: 10px solid lightcoral;
+  
+}
+

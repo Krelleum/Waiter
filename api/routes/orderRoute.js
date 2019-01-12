@@ -65,6 +65,19 @@ router.get('/getorderbystore/:storeid', (req, res, next) => {
 })
 
 
+// Gets order by Store and Table id
+
+router.get('/getorderbytable/:storeid/:tableid', (req, res, next) => {
+    Order.find({storeid: req.params.storeid, tableid: req.params.tableid})
+    .then(result => {
+        res.status(200).json(result)
+    })
+    .catch(err =>{
+        res.status(500).json(err)
+        console.log('error')
+    })
+})
+
 
 router.patch('/requestpayment/:userid', (req, res, next) => {
     Order.updateMany({userid: req.params.userid}, {$set: {status : 'awaitpayment'}})

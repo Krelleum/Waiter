@@ -128,6 +128,20 @@ router.patch('/additemlistid', (req, res, next) => {
 
 
 
+router.get('/getexistingtables/:storeid', (req, res, next) => {
+    Store.findOne({storeid: req.params.storeid})
+    .then(result => {
+        res.status(200).json(result);
+        console.log('getting existing tables')
+    })
+    .catch(err => {
+        res.status(500).json(err);
+        console.log('getting existing tables failed')
+    } )
+})
+
+
+
 
 
 
