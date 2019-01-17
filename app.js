@@ -11,6 +11,7 @@ const userRoute = require('./api/routes/userRoute');
 const itemListRoute = require('./api/routes/itemlistRoute');
 const orderRoute = require('./api/routes/orderRoute');
 const checkAuth = require('./api/routes/checkauth');
+const archiveRoute = require('./api/routes/archiveRoute');
 //  Mongo Connect
 
 mongoose.connect('mongodb://waiterdatabase:waiterdatabase30!@ds055865.mlab.com:55865/waiterdatabase')
@@ -41,6 +42,7 @@ app.use('/user', userRoute);
 app.use('/itemlist', itemListRoute);
 app.use('/auth', checkAuth);
 app.use('/order', orderRoute);
+app.use('/archive', archiveRoute);
 // app.use('/inbox', inboxRoute);
 // app.use('/customer', customerRoute);
 // app.use('/comment', commentRoute);

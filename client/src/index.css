@@ -2,9 +2,19 @@
  --color1: #191917;
  --color2: #58575A;
  --color3: #C99D58;
- --color4: #85A3AC;
+ --color4: rgb(168, 168, 163);
  --color5: #F4F2F4;
- --shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+ --shadowlight: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+ --shadow:  0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+ --shadowstrong: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+
+ --gradient1:linear-gradient(to left, #232526, #414345);
+ --gradient2:linear-gradient(to left, #C99D58, #dbd1c0);
+
+ --gradient4: linear-gradient(to right, #ffffff, #F4F2F4);
+ --gradient3:linear-gradient(to left, #743ad5 0%, #d53a9d 100%);
 }
 
 
@@ -20,7 +30,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: nunito;
-  background-color: var(--color5);
+  background: linear-gradient(to right, #4b525c, rgb(51, 69, 80));
   
  
    

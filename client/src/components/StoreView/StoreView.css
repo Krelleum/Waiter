@@ -3,26 +3,62 @@
 /* TABLEWRAPPER */
 
 .storeviewtablewrapper{
-    background: white;
+    
     overflow: hidden;
     margin-left: 100px;
-    
+    background: var(--gradient1);
     margin-bottom: 20px;
     padding: 0px;
-    
+    box-shadow: var(--shadowstrong);
 }
 
 .storeviewtableheader{
     padding: 10px;
-    background: black;
+    background: var(--gradient1);
     color: white;
+    
+    border-bottom: 2px solid transparent;
+    border-image: var(--gradient2);
+    border-image-slice: 1;
+    border-width: 2px;
+    
 }
 
 .storeviewtableheader h2{
    font-family:Nanum Gothic; 
-   font-size: 1.2rem;
-    margin: 0px;
+   font-size: 1.8rem;
+   font-weight: 900;
+   margin: 0px;
+   
 }
+
+
+
+.storeviewtableinfo{
+    padding: 10px;
+    background: var(--gradient1);
+    color: white;
+    height: 40px;
+    box-shadow: var(--shadowlight);
+}
+
+.storeviewtableinfo p{
+    display: inline-block;
+    color: var(--color4);
+}
+
+.storeviewtableinfocount{
+ float:left;
+}
+
+.storeviewtableinfototal{
+    float: right;
+}
+.storeviewtableinfo span{
+    font-weight: 100;
+}
+
+
 
 /* ORDERWRAPPER */
 .storeviewtableorderwrapper::-webkit-scrollbar{
@@ -33,6 +69,8 @@
 .storeviewtableorderwrapper{
     overflow: scroll;
     max-height: 400px;
+    padding-bottom: 20px;
+    
 }
 
 
@@ -42,28 +80,60 @@
 
 
 .storevieworder{
-    border-radius: 0px 10px  10px 0px;
+    box-shadow: var(--shadowlight);
+    /* background: var(--gradient1);
+    color: var(--color5); */
     
+    color: white;
+    font-weight: 600;
     margin-left: 15px;
-    margin-top: 5px;
+    margin-top: 15px;
     padding: 10px;
+    padding-top: 15px;
+    height: 50px;
+    
 }
 
 .storevieworder p{
     display: inline;
+    
+}
+
+.storevieworderitemprice{
+    float:right;
+    margin-left: 20px;
 }
 
 .storevieworder:hover{
-    background: black;
-    color: white;
+    
+    box-shadow: var(--shadow);
+    
 }
 
 .storevieworderstatusopen{
-    border-left: 10px solid lightgreen;
+   border: 0px solid transparent;
+    
 }
 
 .storevieworderstatusclosed{
-   border-left: 10px solid lightcoral;
-  
+    border-left: 20px solid rgba(79, 202, 79, 0.397);
+    
 }
 
+
+#confirmpaymentbtn{
+    background: transparent;
+    font-size: 1.1rem;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+    color: lightcoral;
+    
+    float: right;
+    
+}
+
+
+#confirmpaymentbtn:hover{
+    background: lightcoral;
+    color: white;
+}

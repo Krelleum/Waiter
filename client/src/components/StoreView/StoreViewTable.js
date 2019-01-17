@@ -22,7 +22,7 @@ class StoreViewTable extends Component {
 
 componentDidMount(){
   this.getOrdersByTable(this.props.storeid, this.props.tableid)
-  this.interval = setInterval(() => {this.getOrdersByTable(this.props.storeid, this.props.tableid) }, 10000)
+  this.interval = setInterval(() => {this.getOrdersByTable(this.props.storeid, this.props.tableid) }, 200)
 }
 
   
@@ -92,9 +92,12 @@ componentDidMount(){
     return (
       <div className='col-md-3 storeviewtablewrapper'>
         <div className='storeviewtableheader'>
-          <h2>Table: {this.props.tableid}</h2>
-          <p>Order Count: {this.state.data.length}</p>
-          <p>Total: {this.calculateTotal()} €</p>
+          <h2>Table {this.props.tableid}</h2>
+          
+        </div>
+        <div className='storeviewtableinfo'>
+          <p className='storeviewtableinfocount'><span>Order Count </span>{this.state.data.length}</p>
+          <p className='storeviewtableinfototal'><span>Total</span> {this.calculateTotal()} €</p>
         </div>
        
         <div className='storeviewtableorderwrapper'>

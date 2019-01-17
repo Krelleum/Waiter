@@ -70,7 +70,9 @@ router.get('/getorderbystore/:storeid', (req, res, next) => {
 router.get('/getorderbytable/:storeid/:tableid', (req, res, next) => {
     Order.find({storeid: req.params.storeid, tableid: req.params.tableid})
     .then(result => {
+       
         res.status(200).json(result)
+        
     })
     .catch(err =>{
         res.status(500).json(err)
@@ -90,6 +92,11 @@ router.patch('/requestpayment/:userid', (req, res, next) => {
         console.log('Orderstatus could not be changed')
     }) 
 })
+
+
+
+
+
 
 
 module.exports = router;

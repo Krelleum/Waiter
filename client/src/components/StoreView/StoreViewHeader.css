@@ -1,0 +1,16 @@
+#logoutbutton{
+    float:right;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar{
+    border: none;
+   background: var(--gradient1);
+   color: white;
+}
