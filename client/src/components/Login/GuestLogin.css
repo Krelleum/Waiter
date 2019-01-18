@@ -1,6 +1,6 @@
 .guestlogincontainer{
     margin-top: 200px;
-    background-color: var(--color5);
+    background-color: var(--gradient5);
     min-height: 600px;
 }
 
@@ -8,6 +8,7 @@
     background: white;
     margin-top: 100px;
     min-height: 200px;
+    box-shadow: var(--shadowstrong);
 }
 
 .guestlogincontainerleft h1{
@@ -34,6 +35,7 @@
     background-size: cover;
     min-height: 500px;
     padding: 0px;
+    box-shadow: var(--shadowstrong);
 }
 /* LOGINFORM */
 
@@ -48,6 +50,7 @@
  height: 200px;
  background: rgba(255,255,255, 0.5);
  padding-top: 40px;
+
 }
 
 .guestloginform input{

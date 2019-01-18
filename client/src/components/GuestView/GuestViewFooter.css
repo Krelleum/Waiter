@@ -2,9 +2,9 @@
     min-height: 20px;
     max-height: 100%;
     overflow: scroll;
-    border-top: 5px solid var(--color3);
-    background: White;
-    color: Black;
+    border-top: 2px solid var(--color3);
+    background: var(--gradient1);
+    color: white;
     position: fixed;
     bottom: 0;
     
@@ -60,10 +60,10 @@
     height: 50px;
     width: 100px;
     font-size: 2rem;
-    color: black;
+    color: white;
     border: none;
     
-    background:var(--color5);
+    background:transparent;
 }
 
 /* FOOTER EXTENDED */
@@ -85,8 +85,8 @@
 
 .guestordersmallwrapper{
     
-    border: 2px solid black;
-    border-radius: 50px;
+    background: var(--gradient1);
+    box-shadow: var(--shadowlight);
     padding: 10px;
     padding-left: 15px;
     padding-right: 10px;

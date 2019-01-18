@@ -68,7 +68,7 @@ class GuestViewOrdered extends Component {
     render() {
         return (
             <div className='guestvieworderedwrapper'>
-                <h1>Orders</h1>
+                <h1>Open Orders</h1>
                 {this.state.data && this.state.data.map((order, i) => <GuestOrderSmall key={i} data={order} />)}
                 
             

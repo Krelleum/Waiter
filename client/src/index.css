@@ -15,6 +15,7 @@
 
  --gradient4: linear-gradient(to right, #ffffff, #F4F2F4);
  --gradient3:linear-gradient(to left, #743ad5 0%, #d53a9d 100%);
+ --gradient5: linear-gradient(to right, #4b525c, rgb(51, 69, 80));
 }
 
 

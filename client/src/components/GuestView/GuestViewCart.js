@@ -70,8 +70,8 @@ class GuestViewCart extends Component {
    
     for(var i = 0; i < store.length; i++){ 
       
-    var itemname = store[i].itemname;
-    var itemprice = store[i].itemprice;
+    let itemname = store[i].itemname;
+    let itemprice = store[i].itemprice;
 
     var userid = this.state.userid;
     var storeid = this.state.storeid;
@@ -95,6 +95,7 @@ class GuestViewCart extends Component {
     })
       .then(response => {
         this.addOrderToUser(response.data.userid, response.data.orderid, itemprice);
+        
         console.log('Order Created - Trying to add order to user account')
       })
       .catch(err => {
@@ -124,9 +125,9 @@ class GuestViewCart extends Component {
       header: { 'Content-Type': 'application/json ' },
     })
       .then(response => {
-
+        this.updateStateOfTotal(itemprice);
         console.log('Order Added to User Account ')
-        this.updateStateOfTotal(itemprice)
+        
 
       })
       .catch(err => {

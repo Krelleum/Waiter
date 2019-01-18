@@ -155,7 +155,7 @@ class ItemSmall extends Component {
 
 
         <div className='itemdescription'>
-          <p>Saftiges {this.props.data.itemname}</p>
+          <p>Our {this.props.data.itemname} is very delicious. All ingredients are from local markets. Everything is bio-organical-superfood.</p>
         </div>
 
         <div className='itemprice'>

@@ -34,17 +34,16 @@ class GuestViewHeader extends Component {
             
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><a>Link</a></li>
-                <li><a>Link</a></li>
+                
                 
               </ul>
               
                 
     </div>
-
+            <button id='logoutbutton' onClick={this.handleLogout.bind(this)}>Logout</button>
     
   </div>
-          <button onClick={this.handleLogout.bind(this)}>Logout</button>
+          
 </nav>
       </div>
     )
