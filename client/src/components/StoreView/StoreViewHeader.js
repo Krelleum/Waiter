@@ -12,6 +12,7 @@ class StoreViewHeader extends Component {
 
     handleLogout() {
         localStorage.removeItem('token');
+        window.location.reload()
     }
 
 

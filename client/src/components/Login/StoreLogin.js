@@ -51,6 +51,7 @@ class StoreLogin extends Component {
         })
         .then(response => {
             localStorage.setItem('token', response.data.token);
+            window.location.reload()
         })
         .catch(err => {
             console.log(err),

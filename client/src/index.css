@@ -23,6 +23,7 @@
 
 *{
   user-select: none;
+  scrollbar-width: none;
 }
 
 button:focus {outline:0;}

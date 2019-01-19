@@ -12,6 +12,7 @@ class GuestViewHeader extends Component {
 
   handleLogout(){
     localStorage.removeItem('token');
+    window.location.reload();
   }
 
  

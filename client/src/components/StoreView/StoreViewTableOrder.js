@@ -20,15 +20,25 @@ renderStatus(){
         <div className='col-md-11 storevieworder storevieworderstatusopen'>
             <p className='storevieworderitemname'>{this.props.data.itemname}</p>
             <p className='storevieworderitemprice'>{this.props.data.itemprice.toFixed(2)} €</p>
-                <button id='confirmpaymentbtn' onClick={this.handleClick.bind(this)}>Confirm Payment</button>
+                <button id='confirmorderbtn' onClick={this.handleConfirmation.bind(this)}>Confirm Order</button>
         </div>)
+    }
+    else if(this.props.data.status === 'awaitpayment'){
+        return (
+            <div className='col-md-11 storevieworder storevieworderstatuspayment'>
+                <p className='storevieworderitemname' >{this.props.data.itemname}</p>
+                <p className='storevieworderitemprice' >{this.props.data.itemprice.toFixed(2)} €</p>
+                <button id='confirmpaymentbtn' onClick={this.handleClick.bind(this)}>Confirm Payment</button>
+            </div>)
     }
     else{
         return (
             <div className='col-md-11 storevieworder storevieworderstatusclosed'>
                 <p className='storevieworderitemname' >{this.props.data.itemname}</p>
                 <p className='storevieworderitemprice' >{this.props.data.itemprice.toFixed(2)} €</p>
-                <button id='confirmpaymentbtn' onClick={this.handleClick.bind(this)}>Confirm Payment</button>
+                <p id='ordersconfirmed'>confirmed</p>
+                <button id='confirmpaymentbtn' onClick={this.handleClick.bind(this)}>Payment</button>
+                
             </div>)
     }
 }
@@ -36,10 +46,10 @@ renderStatus(){
 
 
 
-handleClick(){
-    this.confirmPayment()
-}
 
+
+
+// COPYS ORDER FROM ORDER DB COLLECTION TO ARCHIVE DB COLLECTION
 
 confirmPayment(){
     const userid = this.props.data.userid;
@@ -77,7 +87,7 @@ confirmPayment(){
 
 }
 
-
+// DELTES ORDER FROM USER ACCOUNT ORDER ARRAY
 deleteUserOrder(userid, orderid){
 
 
@@ -105,6 +115,8 @@ deleteUserOrder(userid, orderid){
 
 }
 
+// DELETES ORDER COMPLETLY
+
 deleteOrder(orderid, userid){
     const body = {
         orderid,
@@ -129,9 +141,41 @@ deleteOrder(orderid, userid){
 
 
 
+// CONFIRMS THAT THE ORDER WAS RECEIVED BY KITCHEN OR WAITER
 
 
 
+
+
+
+
+confirmOrder(){
+    var orderid = this.props.data.orderid;
+
+    axios({
+        method: 'patch',
+        url: 'http://localhost:5000/order/confirmorder/' + orderid,
+        header: { 'Content-Type': 'application/json ' }
+    })
+        .then(response => {
+            console.log(response)
+            console.log('Changed Orderstatus to confirmed')
+        })
+        .catch(err => {
+            console.log(err)
+            console.log('Could not change Orderstatus')
+        })
+
+}
+
+    handleClick() {
+        this.confirmPayment()
+    }
+
+
+    handleConfirmation() {
+        this.confirmOrder()
+    }
 
     render() {
         return (

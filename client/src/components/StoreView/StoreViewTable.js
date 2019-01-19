@@ -13,7 +13,8 @@ class StoreViewTable extends Component {
     constructor(props){
       super(props);
       this.state = {
-       data: []
+       data: [],
+       payment: false,
       }
     }
   
@@ -23,6 +24,7 @@ class StoreViewTable extends Component {
 componentDidMount(){
   this.getOrdersByTable(this.props.storeid, this.props.tableid)
   this.interval = setInterval(() => {this.getOrdersByTable(this.props.storeid, this.props.tableid) }, 200)
+  
 }
 
   
@@ -41,7 +43,7 @@ componentDidMount(){
       })
         .then(response => {
           this.setState({ data: response.data });
-          console.log(this.state.data)
+          
 
         })
         .catch(err => {
@@ -53,12 +55,68 @@ componentDidMount(){
   }
 
 
+// ITERATES OVER this.state.data TO CREATE ARRAY WITH ALL ORDER STATUSES
+
+createStatusArray(){
+  let data =  this.state.data;
+
+  let status = [];
+
+  for (var i = 0; i < this.state.data.length; i++) {
+    status.push(data[i].status);
+    
+  }
+  
+  return status
+}
+
+
+
+
+
+
+
+
+  // CHECKS THE ORDERSTATUS ARRAY AND RENDERS CONDITIONALLY 
+  checkStatus(){
+    
+    let statusarray = this.createStatusArray();
+    
+    
+      
+    if (statusarray.includes('open')) {
+      return (
+        <div className='tablestatus tablestatusopen'>
+          <p>Waiting for Preparation</p>
+        </div>
+      )
+    }    
+      else if (statusarray.includes('awaitpayment')) {
+        return (
+          <div className='tablestatus tablestatuspayment'>
+            <p>Waiting for Payment</p>
+          </div>
+        )
+      }
+     
+      else if (statusarray.includes('confirmed')){
+        return(
+        <div className='tablestatus tablestatusconfirmed'>
+          <p>All Orders Confirmed</p>
+        </div>
+        )
+      } 
+    }
+    
+
+  
+
+
 
 
   calculateTotal(){
        
     const data =  this.state.data;
-
     
     var counter = 0;
 
@@ -69,6 +127,35 @@ componentDidMount(){
     
     return counter.toFixed(2);
   }
+
+
+
+  renderTable(){
+    var data = this.state.data
+    var reverseddata = data.reverse()
+
+    if(data.length > 0){
+      return reverseddata.map((order, i) => {
+        return <StoreViewTableOrder key={i} data={order} />
+      })
+    }
+    else{
+      return (
+      <div className='storeviewtablenoorders'>
+        <p>No Orders available </p>
+      </div>
+    )
+    }
+     
+
+    
+   
+    
+
+  }
+
+
+
 
 
 
@@ -93,15 +180,18 @@ componentDidMount(){
       <div className='col-md-3 storeviewtablewrapper'>
         <div className='storeviewtableheader'>
           <h2>Table {this.props.tableid}</h2>
-          
+          {this.checkStatus()}
         </div>
+
+        
+
         <div className='storeviewtableinfo'>
           <p className='storeviewtableinfocount'><span>Order Count </span>{this.state.data.length}</p>
           <p className='storeviewtableinfototal'><span>Total</span> {this.calculateTotal()} €</p>
         </div>
        
         <div className='storeviewtableorderwrapper'>
-          {reverseddata.map((order, i) => { return <StoreViewTableOrder key={i} data={order} /> })}
+          {this.renderTable()}
         </div>
         
        

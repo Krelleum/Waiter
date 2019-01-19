@@ -94,6 +94,18 @@ router.patch('/requestpayment/:userid', (req, res, next) => {
 })
 
 
+router.patch('/confirmorder/:orderid', (req, res, next) => {
+    Order.findOneAndUpdate({ orderid: req.params.orderid }, { $set: { status: 'confirmed' } })
+        .then(result => {
+            res.status(200).json(result)
+            console.log('Orderstatus set to // confirmed')
+        })
+        .catch(err => {
+            res.status(500).json(err);
+            console.log('Orderstatus could not be changed')
+        })
+})
+
 
 
 
