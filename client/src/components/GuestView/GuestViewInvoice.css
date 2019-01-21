@@ -1,0 +1,54 @@
+.userpaymentcontainer{
+    margin-top: 180px;
+}
+
+
+.userpaymentleft{
+    background: var(--gradient1);
+    color: white;
+    height: 400px;
+    box-shadow: var(--shadowstrong);
+}
+
+.userpaymentleft button{
+    background: transparent;
+    border: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 30px;
+    
+}
+
+.invoicenotconfirmed{
+    padding: 10px;
+    background: lightcoral;
+    color: white;
+    box-shadow: var(--shadowlight);
+}
+
+.guestviewinvoicewrapper{
+    background: white;
+    color: black;
+    height: 400px;
+    overflow: scroll;
+    box-shadow: var(--shadowstrong);
+}
+
+.guestviewinvoicewrapper::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+#guestinvoiceitemname{
+    display: inline-block;
+    width: 70%;
+}
+
+#guestinvoiceitemprice{
+    display: inline-block;
+    
+    width: 20%;
+}

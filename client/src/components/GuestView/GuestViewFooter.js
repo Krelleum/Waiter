@@ -52,8 +52,8 @@ class GuestViewFooter extends Component {
       header: { 'Content-Type': 'application/json ' },
     })
       .then(response => {
-        console.log(response.data)
-        this.setState({payment: true})
+        
+        this.props.changePaymentView();
       })
       .catch(err => {
         if (err)
@@ -63,12 +63,6 @@ class GuestViewFooter extends Component {
 
 
   }
-
-
-
-
-
-
 
   
   toggleOrders(){
@@ -83,7 +77,8 @@ class GuestViewFooter extends Component {
   
 
   showOrders(){
-    if (this.state.showOrders){
+    
+    if (this.state.showOrders ){
       return <GuestViewOrder />
     }
     else if (!this.state.showOrders){
@@ -92,11 +87,12 @@ class GuestViewFooter extends Component {
     else if(this.state.payment && this.state.showOrders){
       return (
       <div>
-      <div><p>Payment Requested</p></div>
+        <div><p>Payment Requested</p></div>
       </div>
     )
     }
 
+    
   }
   
   
@@ -149,7 +145,14 @@ const mapDispatchToProps = (dispatch) => {
         type: 'SET_TOTAL',
         payload: amount
       });
+    },
+
+    changePaymentView: () => {
+      dispatch({
+        type:'CHANGE_TO_PAYMENTVIEW'
+      })
     }
+
   };
 };
 

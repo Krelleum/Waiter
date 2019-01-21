@@ -17,6 +17,7 @@
 .guestvieworderedwrapper{
     overflow: scroll;
     max-height: 500px;
+    padding-bottom: 20px;
 }
 
 .guestvieworderedwrapper::-webkit-scrollbar { 
@@ -90,24 +91,30 @@
     padding: 10px;
     padding-left: 15px;
     padding-right: 10px;
+    margin-bottom: 5px;
     margin-top: 10px;
     max-height: 50px;
+    
+}
+
+.guestordersmallwrapper:hover{
+    box-shadow: var(--shadowstrong);
+    
 }
 
 
 
 .guestordersmallname{
-    float:left;
+    display: inline-block;
     font-weight: 800;
-    width: 150px;
-    max-width: 150px;
+    
     
 }
 
 .guestordersmallprice{
-    float: right;
-    width: 100px;   
-    text-align: center;
+    float:right;
+      
+    
 }
 
 
@@ -115,14 +122,20 @@
 .guestordersmallstatus{
     font-size: 1.2rem;
     font-weight: 700;
+   
+   
 }
 
 .guestordersmallstatusopen{
-    color: darkred;
+    color: lightblue;
 }
 
 .guestordersmallstatuspaid{
-    color: darkgreen;
+    color: lightcoral;
+}
+
+.guestordersmallstatusconfirmed{
+    color: lightgreen;
 }
 
 

@@ -18,10 +18,17 @@ class GuestOrderSmall extends Component {
       </div>
       )
     }
-    else{
+    else if(this.props.data.status === 'confirmed'){
+      return (
+        <div className='guestordersmallstatus guestordersmallstatusconfirmed'>
+          <p>Confirmed</p>
+        </div>
+      )
+    }
+    else {
       return (
         <div className='guestordersmallstatus guestordersmallstatusopen'>
-          <p>Open</p>
+          <p>Sent</p>
         </div>
       )
     }
@@ -36,13 +43,16 @@ class GuestOrderSmall extends Component {
           <p>{this.props.data.itemname}</p>
         </div>
 
-        {this.showStatus()}
-
+        
 
         <div className='guestordersmallprice'>
           <p>{this.props.data.itemprice.toFixed(2)} €</p>
         </div>
           
+
+        {this.showStatus()}
+
+
       </div>
     )
   }

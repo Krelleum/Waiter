@@ -11,7 +11,7 @@
     margin-bottom: 30px; 
     /* box-shadow: var(--shadow); */
     font-weight: 300;
-    border-radius: 10px;
+    
    box-shadow: var(--shadowlight);
     transition: all 100ms; 
 }

@@ -7,7 +7,8 @@ import GuestLogin from './Login/GuestLogin';
 import StoreLogin from './Login/StoreLogin';
 import StoreView from './StoreView/StoreView';
 import GuestView from './GuestView/GuestView';
-
+import GuestViewPayment from './GuestView/GuestViewPayment';
+import StoreViewArchive from './StoreView/StoreViewArchive';
 
 
 import { connect } from 'react-redux';
@@ -80,6 +81,14 @@ toRender(){
 
        else if (this.props.login.show === 'StoreView') {
            return <StoreView />
+       }
+
+       else if (this.props.login.show === 'PaymentView'){
+           return <GuestViewPayment />
+       }
+
+       else if (this.props.login.show === 'StoreArchiveView'){
+           return <StoreViewArchive/>
        }
 
        else if (this.props.login.show === 'SetupView') {

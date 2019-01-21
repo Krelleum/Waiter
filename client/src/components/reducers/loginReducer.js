@@ -21,6 +21,11 @@ const loginReducer = (state = {
                 ...state,
                 show: 'GuestView'
             };
+        case 'CHANGE_TO_PAYMENTVIEW':
+            return state = {
+                ...state,
+                show: 'PaymentView'
+            };
             break;
         case 'CHANGE_TO_STOREVIEW':
            return state = {
@@ -28,6 +33,12 @@ const loginReducer = (state = {
                 show: 'StoreView'
             };
             break;
+
+        case 'CHANGE_TO_STOREARCHIVEVIEW':
+            return state = {
+                ...state,
+                show: 'StoreArchiveView'
+            }    
         case 'CHANGE_TO_SETUPVIEW':
             return state = {
                 ...state,

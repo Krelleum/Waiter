@@ -1,0 +1,17 @@
+.storeviewarchiveorderwrapper{
+    background: var(--gradient1);
+    box-shadow: var(--shadowstrong);
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.storeviewarchiveorder{
+   
+    color: white;
+    margin-left: 5px;
+    
+}
+
+.archvieordertime{
+    float: right;
+}

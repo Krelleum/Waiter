@@ -35,6 +35,59 @@ router.post('/sendtoarchive', (req, res, next) => {
 
 } )
 
+router.get('/getorderbyuser/:userid', (req, res, next) => {
+    OrderArchive.find({userid: req.params.userid})
+    .exec()
+    .then(result => {
+        console.log(result)
+        res.status(200).json(result);
+        
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    })
+    
+})
+
+
+// Get last 200 Order Items by Store ID
+
+router.get('/getlastorders/:storeid', (req, res, next) => {
+    OrderArchive.find({storeid: req.params.storeid})
+    .limit(250)
+    .then(result => {
+        res.status(200).json(result);
+        console.log('last 250 Orders found by Store ID')
+    })
+    .catch(err => {
+        res.status(500).json(err)
+        console.log('error while getting last 250 Order Items by Store ID')
+    })
+})
+
+
+
+// Get Orders By Date
+
+router.get('/getordersbydate/:storeid/:startdate/:enddate/', (req, res, next) => {
+    console.log(req.params.startdate)
+    console.log(req.params.enddate)
+    OrderArchive.find(
+        {storeid: req.params.storeid,
+         timecreated: 
+             { $gte: new Date(req.params.startdate), $lte: new Date(req.params.enddate) }})
+    .then(result => {
+        res.status(200).json(result);
+        
+        console.log('found orders by date')
+    })
+    .catch(err => {
+        res.status(500).json(err);
+        console.log('could not find orders by date')
+    })
+})
+
+
 
 
 // Remove Order ID from User Account OrderID ARRAY

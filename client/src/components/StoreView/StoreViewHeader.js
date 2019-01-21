@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import './StoreViewHeader.css';
 
+import { connect } from 'react-redux';
 
 
 class StoreViewHeader extends Component {
@@ -35,8 +36,8 @@ class StoreViewHeader extends Component {
 
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
-                                <li><a>Link</a></li>
-                                <li><a>Link</a></li>
+                                <li onClick={this.props.changeArchiveView.bind(this)}><a>Archive</a></li>
+                                <li onClick={this.props.changeStoreView.bind(this)}><a>Dashboard</a></li>
 
                             </ul>
 
@@ -53,4 +54,28 @@ class StoreViewHeader extends Component {
 }
 
 
-export default StoreViewHeader;
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeArchiveView: () => {
+            dispatch({
+                type: 'CHANGE_TO_STOREARCHIVEVIEW'
+            })
+        },
+
+        changeStoreView: () =>{
+            dispatch({
+                type: 'CHANGE_TO_STOREVIEW'
+            })
+        }
+}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoreViewHeader);

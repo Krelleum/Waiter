@@ -120,8 +120,9 @@ getToken(storeid, tableid, userid){
         headers: { 'Content-Type': 'application/json' },
     })
     .then(response =>{
-        localStorage.setItem('token', response.data.token)
-        window.location.reload()
+        localStorage.setItem('token', response.data.token);
+        localStorage.removeItem('userid');
+        window.location.reload();
     })
     .catch(err => {
         console.log(err)

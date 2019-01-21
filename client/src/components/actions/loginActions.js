@@ -26,3 +26,16 @@ export function changeGuestView() {
 
     };
 }
+
+export function changePaymentView(){
+    return {
+        type: 'CHANGE_TO_PAYMENTVIEW'
+    }
+}
+
+
+export function changeArchiveView(){
+    return {
+        type: 'CHANGE_TO_STOREARCHIVEVIEW'
+    }
+}
